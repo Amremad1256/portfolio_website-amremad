@@ -23,3 +23,45 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
+
+/* Markdown body on project detail pages, styled with the theme tokens. */
+.work-body > :first-child {
+  margin-top: 0;
+}
+
+.work-body h2 {
+  margin-top: 3rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.work-body p {
+  margin-top: 1rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+.work-body ul {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.work-body li {
+  margin-top: 0.5rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+.work-body strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.work-body a {
+  color: var(--color-emerald);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

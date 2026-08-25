@@ -1,0 +1,43 @@
+---
+title: "Odoo ERP Rollout for a Distribution Business"
+summary: "Replaced spreadsheets and disconnected tools with one ERP running sales, inventory, and invoicing end to end."
+role: "Solutions Architect & Implementation Lead"
+year: "2025"
+tags: ["Odoo", "ERP", "Process Design", "Migration"]
+---
+
+## The problem
+
+The business was running its entire operation across three spreadsheets, a
+separate accounting package, and a shared mailbox. Stock counts were accurate
+only on the day someone recounted them, and every invoice was re-keyed by hand
+from an email thread.
+
+Nobody trusted the numbers. Month-end close took the better part of a week, and
+the sales team quoted from prices that were frequently out of date.
+
+## What I built
+
+I mapped the real process first — not the one written in the handbook — and
+found that the same order was being re-entered four times between enquiry and
+invoice.
+
+From there I implemented Odoo across sales, inventory, and invoicing:
+
+- A single product catalogue with live stock levels, so quotes reflect what is
+  physically on the shelf.
+- Quote-to-invoice as one continuous flow, removing all four re-entry points.
+- Migration of three years of historical orders and customer records, with a
+  reconciliation pass so opening balances matched the old system exactly.
+- Role-based access, so the warehouse sees what it needs and nothing else.
+
+I ran the training in short sessions with the people who would actually use it,
+using their own data rather than a demo database.
+
+## The result
+
+Month-end close dropped from roughly five days to under one. Order re-entry
+disappeared entirely, which removed the most common source of pricing errors.
+
+Most importantly, the team stopped keeping private side-spreadsheets — the
+clearest signal that they had started trusting the system.
