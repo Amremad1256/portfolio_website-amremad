@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 const links = [
   { label: "Email", href: "mailto:ae05038@gmail.com" },
@@ -9,11 +9,13 @@ const links = [
 ];
 
 export default function Footer() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <footer className="bg-ink px-6 py-16 text-cream sm:py-20">
       <motion.div
         className="mx-auto max-w-5xl"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -33,7 +35,7 @@ export default function Footer() {
               <li key={label}>
                 <a
                   href={href}
-                  className="text-cream/70 transition-colors hover:text-cream"
+                  className="inline-block py-1 -my-1 text-cream/70 transition-colors hover:text-cream"
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}

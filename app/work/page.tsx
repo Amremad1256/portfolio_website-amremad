@@ -3,9 +3,23 @@ import Link from "next/link";
 import { getAllWork } from "@/lib/work";
 
 export const metadata: Metadata = {
-  title: "Work — Amr Emad",
+  title: "Selected work",
   description:
     "Selected projects across ERP implementation, AI automation, and software engineering.",
+  openGraph: {
+    type: "website",
+    siteName: "Amr Emad",
+    title: "Selected work",
+    description:
+      "Selected projects across ERP implementation, AI automation, and software engineering.",
+    url: "/work",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Selected work",
+    description:
+      "Selected projects across ERP implementation, AI automation, and software engineering.",
+  },
 };
 
 export default function Work() {

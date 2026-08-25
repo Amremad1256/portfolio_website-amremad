@@ -2,9 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — Amr Emad",
+  title: "About",
   description:
     "AI Transformation Consultant & Solutions Architect bridging commercial strategy, AI automation, and software engineering.",
+  openGraph: {
+    type: "website",
+    siteName: "Amr Emad",
+    title: "About",
+    description:
+      "AI Transformation Consultant & Solutions Architect bridging commercial strategy, AI automation, and software engineering.",
+    url: "/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About",
+    description:
+      "AI Transformation Consultant & Solutions Architect bridging commercial strategy, AI automation, and software engineering.",
+  },
 };
 
 export default function About() {

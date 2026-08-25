@@ -18,8 +18,20 @@ export async function generateMetadata({
   if (!project) return {};
 
   return {
-    title: `${project.title} — Amr Emad`,
+    title: project.title,
     description: project.summary,
+    openGraph: {
+      type: "article",
+      siteName: "Amr Emad",
+      title: project.title,
+      description: project.summary,
+      url: `/work/${project.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.summary,
+    },
   };
 }
 
@@ -31,7 +43,7 @@ export default async function WorkDetail({ params }: PageProps<"/work/[slug]">) 
 
   return (
     <main className="flex-1 px-6 py-24 sm:py-32">
-      <article className="mx-auto max-w-[700px]">
+      <article className="mx-auto max-w-5xl">
         <Link
           href="/work"
           className="font-display text-sm text-muted transition-colors hover:text-ink"
@@ -39,7 +51,7 @@ export default async function WorkDetail({ params }: PageProps<"/work/[slug]">) 
           ← Back to work
         </Link>
 
-        <h1 className="mt-8 font-display text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
+        <h1 className="mt-8 max-w-[700px] font-display text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
           {project.title}
         </h1>
 
@@ -58,7 +70,7 @@ export default async function WorkDetail({ params }: PageProps<"/work/[slug]">) 
           ))}
         </ul>
 
-        <div className="mt-12">
+        <div className="mt-12 max-w-[700px]">
           <MDXRemote source={project.body} components={mdxComponents} />
         </div>
       </article>

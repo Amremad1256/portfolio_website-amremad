@@ -1,19 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { motion } from "motion/react";
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.06 },
-  },
-};
-
-const word = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 },
-};
+import { motion, useReducedMotion } from "motion/react";
 
 type RevealTextProps = {
   text: string;
@@ -21,7 +9,19 @@ type RevealTextProps = {
 };
 
 export default function RevealText({ text, className }: RevealTextProps) {
+  const reduceMotion = useReducedMotion();
   const words = text.split(" ");
+
+  // With reduced motion the words still fade in, but nothing travels.
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.06 } },
+  };
+
+  const word = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 12 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <motion.p

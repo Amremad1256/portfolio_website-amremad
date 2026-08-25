@@ -19,9 +19,37 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
+const siteTitle = "Amr Emad — AI Transformation Consultant & Solutions Architect";
+
+const siteDescription =
+  "I connect commercial strategy, AI automation, and software engineering — taking a business from idea to a working system.";
+
 export const metadata: Metadata = {
-  title: "Amr Emad",
-  description: "AI Transformation Consultant & Solutions Architect",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: "%s · Amr Emad",
+  },
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName: "Amr Emad",
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

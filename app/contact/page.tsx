@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact — Amr Emad",
+  title: "Contact",
   description:
     "Get in touch about AI automation, ERP, or building a product from scratch.",
+  openGraph: {
+    type: "website",
+    siteName: "Amr Emad",
+    title: "Contact",
+    description:
+      "Get in touch about AI automation, ERP, or building a product from scratch.",
+    url: "/contact",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact",
+    description:
+      "Get in touch about AI automation, ERP, or building a product from scratch.",
+  },
 };
 
 const methods = [
@@ -28,16 +42,16 @@ const methods = [
 export default function Contact() {
   return (
     <main className="flex-1 px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-[600px]">
+      <div className="mx-auto max-w-5xl">
         <h1 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
           Let&apos;s talk
         </h1>
 
-        <p className="mt-6 text-lg leading-relaxed text-muted">
+        <p className="mt-6 max-w-[600px] text-lg leading-relaxed text-muted">
           Tell me about your business or project — I usually reply within a day.
         </p>
 
-        <ul className="mt-12 flex flex-col gap-4">
+        <ul className="mt-12 flex max-w-[600px] flex-col gap-4">
           {methods.map(({ label, value, href, external }) => (
             <li key={label}>
               <a
