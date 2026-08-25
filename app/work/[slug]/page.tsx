@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx";
 import { getAllWorkSlugs, getWorkBySlug } from "@/lib/work";
 
 export function generateStaticParams() {
@@ -56,11 +58,9 @@ export default async function WorkDetail({ params }: PageProps<"/work/[slug]">) 
           ))}
         </ul>
 
-        {/* Content comes from local .md files in content/work, not user input. */}
-        <div
-          className="work-body mt-12"
-          dangerouslySetInnerHTML={{ __html: project.html }}
-        />
+        <div className="mt-12">
+          <MDXRemote source={project.body} components={mdxComponents} />
+        </div>
       </article>
     </main>
   );

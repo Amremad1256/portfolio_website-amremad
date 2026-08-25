@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { marked } from "marked";
 
 const WORK_DIR = path.join(process.cwd(), "content", "work");
+const EXTENSION = ".mdx";
 
 /** The frontmatter every project file must define. */
 export type WorkMeta = {
@@ -15,9 +15,9 @@ export type WorkMeta = {
   tags: string[];
 };
 
-/** A project plus its body, already converted from Markdown to HTML. */
+/** A project plus its raw MDX body, ready to be rendered by MDXRemote. */
 export type WorkProject = WorkMeta & {
-  html: string;
+  body: string;
 };
 
 function readProject(fileName: string): WorkProject {
@@ -35,14 +35,13 @@ function readProject(fileName: string): WorkProject {
   }
 
   return {
-    slug: fileName.replace(/\.md$/, ""),
+    slug: fileName.slice(0, -EXTENSION.length),
     title: data.title as string,
     summary: data.summary as string,
     role: data.role as string,
     year: data.year as string,
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
-    // `async: false` pins the synchronous overload, which returns a string.
-    html: marked.parse(content, { async: false }),
+    body: content,
   };
 }
 
@@ -51,9 +50,11 @@ function readAll(): WorkProject[] {
 
   return fs
     .readdirSync(WORK_DIR)
-    .filter((name) => name.endsWith(".md"))
+    .filter((name) => name.endsWith(EXTENSION))
     .map(readProject)
-    .sort((a, b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title));
+    .sort(
+      (a, b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title),
+    );
 }
 
 /** Every project, newest year first. Used by the Work index. */

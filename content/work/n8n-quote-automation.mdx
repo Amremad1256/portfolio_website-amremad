@@ -18,6 +18,11 @@ by which point some had already gone elsewhere.
 
 ## What I built
 
+<Video
+  src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  title="Walkthrough of the quote triage workflow"
+/>
+
 An n8n workflow sitting between the inbound channels and the CRM:
 
 - Normalises every enquiry into one shape, regardless of which channel it came
@@ -28,6 +33,24 @@ An n8n workflow sitting between the inbound channels and the CRM:
 - Looks up current pricing and stock, then drafts a quote from a template.
 - Routes the draft to the right person, with unclear enquiries pushed to a
   review queue instead of being auto-sent.
+
+<Gallery cols="3">
+  <Figure
+    src="/work/n8n-quote-automation/flow-intake.png"
+    alt="The intake step normalising enquiries from three channels"
+    caption="Intake"
+  />
+  <Figure
+    src="/work/n8n-quote-automation/flow-extract.png"
+    alt="The extraction step pulling structured fields from free text"
+    caption="Extraction"
+  />
+  <Figure
+    src="/work/n8n-quote-automation/flow-review.png"
+    alt="The review queue holding ambiguous enquiries for a human"
+    caption="Review queue"
+  />
+</Gallery>
 
 The deliberate choice here was to stop short of sending anything automatically.
 A human approves every quote before it leaves — the automation removes the
