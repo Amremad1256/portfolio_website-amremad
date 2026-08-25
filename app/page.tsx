@@ -16,6 +16,14 @@ const tracks = [
   },
 ];
 
+const proofPoints = [
+  "Software Engineering Degree",
+  "ISTQB Certified",
+  "Odoo & SAP ERP",
+  "AI & Automation",
+  "n8n Workflows",
+];
+
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
@@ -86,6 +94,42 @@ export default function Home() {
             → converging into{" "}
             <span className="text-emerald">AI Transformation</span>
           </p>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-cream px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            Built on real experience
+          </p>
+          <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {proofPoints.map((point) => (
+              <li
+                key={point}
+                className="font-display text-sm font-medium text-ink sm:text-base"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-emerald px-6 py-32 text-center sm:py-40">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-cream sm:text-4xl lg:text-5xl">
+            Let&apos;s build your working system.
+          </h2>
+          <p className="mx-auto mt-6 max-w-[500px] text-lg leading-relaxed text-cream/90">
+            Whether it&apos;s AI automation, ERP, or a product from scratch —
+            let&apos;s talk about where your business could go.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-10 inline-block rounded-full bg-cream px-6 py-3 font-medium text-emerald transition-colors hover:bg-orange hover:text-cream"
+          >
+            Get in touch
+          </Link>
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Fraunces, Inter } from "next/font/google";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );
