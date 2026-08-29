@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CV_ARIA_LABEL, CV_FILENAME, CV_PATH } from "@/lib/cv";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,7 +21,16 @@ export const metadata: Metadata = {
   },
 };
 
-const methods = [
+type Method = {
+  label: string;
+  value: string;
+  href: string;
+  external?: boolean;
+  download?: string;
+  ariaLabel?: string;
+};
+
+const methods: Method[] = [
   {
     label: "Email",
     value: "ae05038@gmail.com",
@@ -37,6 +47,14 @@ const methods = [
     href: "https://github.com/Amremad1256",
     external: true,
   },
+  {
+    label: "CV",
+    value: "Download PDF",
+    href: CV_PATH,
+    external: true,
+    download: CV_FILENAME,
+    ariaLabel: CV_ARIA_LABEL,
+  },
 ];
 
 export default function Contact() {
@@ -52,11 +70,13 @@ export default function Contact() {
         </p>
 
         <ul className="mt-12 flex max-w-[600px] flex-col gap-4">
-          {methods.map(({ label, value, href, external }) => (
+          {methods.map(({ label, value, href, external, download, ariaLabel }) => (
             <li key={label}>
               <a
                 href={href}
+                aria-label={ariaLabel}
                 className="flex items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-emerald"
+                {...(download ? { download } : {})}
                 {...(external
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
