@@ -1,11 +1,24 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import {
+  EMAIL_HREF,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  WHATSAPP_ARIA_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
 
 const links = [
-  { label: "Email", href: "mailto:amr.emad.zaki.1@gmail.com" },
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "https://github.com/Amremad1256", external: true },
+  { label: "Email", href: EMAIL_HREF },
+  {
+    label: "WhatsApp",
+    href: WHATSAPP_URL,
+    external: true,
+    ariaLabel: WHATSAPP_ARIA_LABEL,
+  },
+  { label: "LinkedIn", href: LINKEDIN_URL, external: true },
+  { label: "GitHub", href: GITHUB_URL, external: true },
 ];
 
 export default function Footer() {
@@ -31,10 +44,11 @@ export default function Footer() {
           </div>
 
           <ul className="flex flex-col gap-3 text-sm">
-            {links.map(({ label, href, external }) => (
+            {links.map(({ label, href, external, ariaLabel }) => (
               <li key={label}>
                 <a
                   href={href}
+                  aria-label={ariaLabel}
                   className="inline-block py-1 -my-1 text-cream/70 transition-colors hover:text-cream"
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }

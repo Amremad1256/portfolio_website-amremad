@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Node build-time scripts, not part of the app bundle. They use
+    // CommonJS `require`, which the Next.js rules disallow in app code.
+    "scripts/**",
   ]),
 ]);
 

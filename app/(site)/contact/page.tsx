@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import { CV_ARIA_LABEL, CV_FILENAME, CV_PATH } from "@/lib/cv";
+import {
+  EMAIL,
+  EMAIL_HREF,
+  GITHUB_LABEL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  WHATSAPP_ARIA_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -33,18 +42,27 @@ type Method = {
 const methods: Method[] = [
   {
     label: "Email",
-    value: "amr.emad.zaki.1@gmail.com",
-    href: "mailto:amr.emad.zaki.1@gmail.com",
+    value: EMAIL,
+    href: EMAIL_HREF,
+  },
+  {
+    // The phone number stays inside the link — only "WhatsApp" is shown.
+    label: "WhatsApp",
+    value: "Start a chat",
+    href: WHATSAPP_URL,
+    external: true,
+    ariaLabel: WHATSAPP_ARIA_LABEL,
   },
   {
     label: "LinkedIn",
-    value: "Profile",
-    href: "#",
+    value: "View profile",
+    href: LINKEDIN_URL,
+    external: true,
   },
   {
     label: "GitHub",
-    value: "github.com/Amremad1256",
-    href: "https://github.com/Amremad1256",
+    value: GITHUB_LABEL,
+    href: GITHUB_URL,
     external: true,
   },
   {

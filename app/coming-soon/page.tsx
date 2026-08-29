@@ -1,5 +1,30 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Fragment } from "react";
+import {
+  EMAIL,
+  EMAIL_HREF,
+  EXTERNAL_LINK_PROPS,
+  LINKEDIN_URL,
+  WHATSAPP_ARIA_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/contact";
+
+const contactLinks = [
+  { label: EMAIL, href: EMAIL_HREF, external: false, ariaLabel: undefined },
+  {
+    label: "WhatsApp",
+    href: WHATSAPP_URL,
+    external: true,
+    ariaLabel: WHATSAPP_ARIA_LABEL,
+  },
+  {
+    label: "LinkedIn",
+    href: LINKEDIN_URL,
+    external: true,
+    ariaLabel: undefined,
+  },
+];
 
 export const metadata: Metadata = {
   title: {
@@ -44,21 +69,23 @@ export default function ComingSoon() {
         className="animate-fade-up mt-12 flex flex-col items-center gap-3 border-t border-line pt-8 text-sm sm:flex-row sm:gap-6"
         style={{ animationDelay: "270ms" }}
       >
-        <a
-          href="mailto:amr.emad.zaki.1@gmail.com"
-          className="text-muted transition-colors hover:text-ink"
-        >
-          amr.emad.zaki.1@gmail.com
-        </a>
-        <span aria-hidden="true" className="hidden text-line sm:inline">
-          &middot;
-        </span>
-        <a
-          href="#"
-          className="text-muted transition-colors hover:text-ink"
-        >
-          LinkedIn
-        </a>
+        {contactLinks.map(({ label, href, external, ariaLabel }, i) => (
+          <Fragment key={label}>
+            {i > 0 && (
+              <span aria-hidden="true" className="hidden text-line sm:inline">
+                &middot;
+              </span>
+            )}
+            <a
+              href={href}
+              aria-label={ariaLabel}
+              className="text-muted transition-colors hover:text-ink"
+              {...(external ? EXTERNAL_LINK_PROPS : {})}
+            >
+              {label}
+            </a>
+          </Fragment>
+        ))}
       </div>
     </main>
   );

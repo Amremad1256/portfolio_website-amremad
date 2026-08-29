@@ -111,6 +111,21 @@ of hunting through thirty files. Second, Tailwind ships hundreds of its own
 colours (`text-gray-500`, `bg-slate-800`) that will *work* but look subtly wrong
 against this warm palette.
 
+### The contact rule
+
+> **Contact details live in `lib/contact.ts`. Never type an email address,
+> profile URL or phone number directly into a page.**
+
+Every way to reach you — email, WhatsApp, LinkedIn, GitHub — is defined once in
+that file and imported where needed. Change it there and every page updates.
+
+This exists because those details were originally copied into three separate
+files, and the LinkedIn link stayed broken in all three for a while because
+fixing one did not fix the others.
+
+The WhatsApp number is deliberately only ever inside the link. The visible text
+always reads "WhatsApp".
+
 ---
 
 ## 4. Folder & file map
@@ -147,7 +162,8 @@ amremad/
 ├── content/work/                Your case studies. One .mdx file per project.
 ├── lib/
 │   ├── work.ts                  Reads that folder, checks each file, sorts them newest first.
-│   └── cv.ts                    The CV's path and download name, in one place.
+│   ├── cv.ts                    The CV's path and download name, in one place.
+│   └── contact.ts               Email, WhatsApp, LinkedIn and GitHub links, in one place.
 ├── public/                      Files served exactly as-is (images, icons, the CV).
 │   ├── logo.png                 Logo on a cream background. Used on the coming-soon page.
 │   ├── logo-transparent.png     Transparent logo. The source for the two icons.
@@ -469,7 +485,6 @@ Things that are not real yet. Roughly most-important first.
 
 ### Links & media
 
-- **The LinkedIn link goes nowhere.** It is set to `#` in **three** files: `components/Footer.tsx`, `app/(site)/contact/page.tsx`, and `app/coming-soon/page.tsx`. Replace with the real profile URL in all three.
 - **The case-study video is a placeholder** — a well-known joke YouTube link in `n8n-quote-automation.mdx`. Swap it before anyone sees it.
 - **The project images are generated placeholders** — plain coloured blocks in `public/work/`. Replace with real screenshots.
 - **The CV is a placeholder.** `public/amr-emad-cv.pdf` is a one-page stand-in. Replace that exact file — same folder, same name — and both CV links pick it up with no code change.
