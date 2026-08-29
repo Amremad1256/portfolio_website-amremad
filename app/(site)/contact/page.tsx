@@ -33,8 +33,8 @@ type Method = {
 const methods: Method[] = [
   {
     label: "Email",
-    value: "ae05038@gmail.com",
-    href: "mailto:ae05038@gmail.com",
+    value: "amr.emad.zaki.1@gmail.com",
+    href: "mailto:amr.emad.zaki.1@gmail.com",
   },
   {
     label: "LinkedIn",

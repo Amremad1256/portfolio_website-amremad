@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: {
@@ -13,22 +14,27 @@ export const metadata: Metadata = {
 export default function ComingSoon() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
-      <h1
-        className="animate-fade-up font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl"
+      {/* width/height are the displayed size (144px max), not the source's
+          1254px, so Next.js serves a small image instead of the full original. */}
+      <Image
+        src="/logo.png"
+        alt="Amr Emad logo"
+        width={144}
+        height={144}
+        priority
+        className="animate-fade-up h-28 w-28 sm:h-36 sm:w-36"
         style={{ animationDelay: "0ms" }}
+      />
+
+      <h1
+        className="animate-fade-up mt-8 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl"
+        style={{ animationDelay: "90ms" }}
       >
         Amr Emad
       </h1>
 
       <p
-        className="animate-fade-up mt-5 max-w-[520px] text-lg leading-relaxed text-muted"
-        style={{ animationDelay: "90ms" }}
-      >
-        AI Transformation Consultant &amp; Solutions Architect
-      </p>
-
-      <p
-        className="animate-fade-up mt-10 font-display text-sm font-semibold uppercase tracking-[0.2em] text-emerald"
+        className="animate-fade-up mt-8 font-display text-sm font-semibold uppercase tracking-[0.2em] text-emerald"
         style={{ animationDelay: "180ms" }}
       >
         New portfolio launching soon.
@@ -39,10 +45,10 @@ export default function ComingSoon() {
         style={{ animationDelay: "270ms" }}
       >
         <a
-          href="mailto:ae05038@gmail.com"
+          href="mailto:amr.emad.zaki.1@gmail.com"
           className="text-muted transition-colors hover:text-ink"
         >
-          ae05038@gmail.com
+          amr.emad.zaki.1@gmail.com
         </a>
         <span aria-hidden="true" className="hidden text-line sm:inline">
           &middot;

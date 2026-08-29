@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 
 const links = [
-  { label: "Email", href: "mailto:ae05038@gmail.com" },
+  { label: "Email", href: "mailto:amr.emad.zaki.1@gmail.com" },
   { label: "LinkedIn", href: "#" },
   { label: "GitHub", href: "https://github.com/Amremad1256", external: true },
 ];
